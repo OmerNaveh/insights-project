@@ -1,6 +1,7 @@
 const { parse } = require("node-html-parser");
-const { unwantedChars } = require("./utils/unwantedChars");
 const axios = require("axios");
+const cron = require("node-cron");
+const { unwantedChars } = require("./utils/unwantedChars");
 
 const scrape = async (
   url,
@@ -32,11 +33,14 @@ const scrape = async (
   console.log(data);
 };
 
-scrape(
-  "http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion/all",
-  "#list > .row",
-  ".col-sm-6",
-  "h4",
-  ".text",
-  ".col-sm-6"
-);
+//running every two minutes using cron
+cron.schedule("*/2 * * * *", () => {
+  scrape(
+    "http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion/all",
+    "#list > .row",
+    ".col-sm-6",
+    "h4",
+    ".text",
+    ".col-sm-6"
+  );
+});
