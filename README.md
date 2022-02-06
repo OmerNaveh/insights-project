@@ -1,1 +1,1 @@
-# insights-project
+# Insights Project
