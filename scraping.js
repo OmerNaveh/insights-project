@@ -41,7 +41,7 @@ const scrape = async (
         content,
         date: new Date(date),
       });
-      if (!(await Scrape.exists({ title }))) {
+      if (!(await Scrape.exists({ title, content, author }))) {
         await entry.save();
       }
     } catch {
