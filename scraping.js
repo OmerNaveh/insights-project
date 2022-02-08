@@ -5,6 +5,7 @@ const { unwantedChars } = require("./utils/unwantedChars");
 const { showMoreContent } = require("./utils/showMoreContent");
 const Scrape = require("./mongo/models");
 const mongoose = require("mongoose");
+const { retrieveData } = require("./controllers/apiController");
 const proxy = {
   proxy: { port: 8118, host: "localhost" },
 };
@@ -43,6 +44,7 @@ const scrape = async (
       });
       if (!(await Scrape.exists({ title, content, author }))) {
         await entry.save();
+        await retrieveData(); //send new data to all users connected to server
       }
     } catch {
       continue;
@@ -60,13 +62,13 @@ scrape(
   ".col-sm-6"
 );
 // running every two minutes using cron
-cron.schedule("*/2 * * * *", () => {
-  scrape(
-    "http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion/all",
-    "#list > .row",
-    ".col-sm-6",
-    "h4",
-    ".text",
-    ".col-sm-6"
-  );
-});
+// cron.schedule("*/2 * * * *", () => {
+//   scrape(
+//     "http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion/all",
+//     "#list > .row",
+//     ".col-sm-6",
+//     "h4",
+//     ".text",
+//     ".col-sm-6"
+//   );
+// });
