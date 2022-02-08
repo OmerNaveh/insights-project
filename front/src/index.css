@@ -5,9 +5,13 @@
 }
 .feed {
   margin: 0 10%;
-  height: 90vh;
+  height: 80vh;
+  min-width: 30%;
+  max-width: 30%;
   overflow-y: scroll;
+  overflow-x: hidden;
   border: solid 1px black;
+  overflow-wrap: break-word;
   padding: 1em;
 }
 .entry {
@@ -16,5 +20,5 @@
 .App {
   display: flex;
   justify-content: space-between;
-  margin: 0 5%;
+  margin: 2% 5%;
 }
