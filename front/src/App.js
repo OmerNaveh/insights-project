@@ -7,7 +7,7 @@ function App() {
   useEffect(() => {
     let source = new EventSource(url);
     source.onmessage = (e) => {
-      setData(JSON.parse(e.data));
+      setData(JSON.parse(e.data).entries);
     };
     source.onerror = () => {
       source.close();
