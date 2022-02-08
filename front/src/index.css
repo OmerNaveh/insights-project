@@ -5,11 +5,16 @@
 }
 .feed {
   margin: 0 10%;
-  height: 70vh;
+  height: 90vh;
   overflow-y: scroll;
   border: solid 1px black;
   padding: 1em;
 }
 .entry {
   background-color: gray;
+}
+.App {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 5%;
 }

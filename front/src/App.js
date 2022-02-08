@@ -1,13 +1,15 @@
 import { useContext, useEffect } from "react";
 import context from "./context/scrapingContext";
 import Feed from "./components/Feed";
+import Analytics from "./components/Analytics";
 const url = "http://localhost:4000/api";
 function App() {
-  const { setData } = useContext(context);
+  const { setData, setAnalytics } = useContext(context);
   useEffect(() => {
     let source = new EventSource(url);
     source.onmessage = (e) => {
       setData(JSON.parse(e.data).entries);
+      setAnalytics(JSON.parse(e.data).analytics);
     };
     source.onerror = () => {
       source.close();
@@ -15,6 +17,7 @@ function App() {
   }, []);
   return (
     <div className="App">
+      <Analytics />
       <Feed />
     </div>
   );
