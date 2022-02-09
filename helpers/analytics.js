@@ -5,7 +5,7 @@ exports.analysis = async () => {
     const initialData = await Scrape.find({});
     const [filteredPorn, filterOutPorn] = filteredArrayesByKeyword(
       initialData,
-      ["porn", "p0rn", "sex", "s3x"]
+      ["porn", "p0rn", "sex", "s3x", "orgy", "fuck"]
     );
     const [filteredDataleaks, filterOutDataleaks] = filteredArrayesByKeyword(
       filterOutPorn,
@@ -13,11 +13,11 @@ exports.analysis = async () => {
     );
     const [filteredDrugs, filterOutDrugs] = filteredArrayesByKeyword(
       filterOutDataleaks,
-      ["cocaine", "buprenorphine", "meth", "hashish"]
+      ["cocaine", "buprenorphine", "meth", "hashish", "drug", "Mushroom"]
     );
     const [filteredMoney, filterOutMoney] = filteredArrayesByKeyword(
       filterOutDrugs,
-      ["bitcoin", "paypal"]
+      ["bitcoin", "paypal", "stock", "cryptocurrency", "etherium"]
     );
     return {
       total: initialData.length,
