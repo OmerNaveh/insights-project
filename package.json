@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app.js",
-    "server": "node app.js",
-    "scrape": "node scraping.js"
+    "server": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +24,6 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "mongoose": "^6.2.0",
-    "node-cron": "^3.0.0",
     "node-html-parser": "^5.2.0"
   },
   "devDependencies": {

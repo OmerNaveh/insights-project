@@ -21,5 +21,5 @@ exports.retrieveData = async (req, res, next) => {
   //   );
   //   console.log("scrapped");
   //   this.retrieveData(req, res, next);
-  // }, 2000);
+  // }, 120000); //every 2 minutes
 };
