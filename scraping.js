@@ -4,7 +4,6 @@ const cron = require("node-cron");
 const { unwantedChars } = require("./utils/unwantedChars");
 const { showMoreContent } = require("./utils/showMoreContent");
 const Scrape = require("./mongo/models");
-const mongoose = require("mongoose");
 const proxy = {
   proxy: { port: 8118, host: "localhost" },
 };
@@ -48,25 +47,4 @@ exports.scrape = async (
       continue;
     }
   }
-  // mongoose.connection.close();
 };
-
-// scrape(
-//   "http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion/all",
-//   "#list > .row",
-//   ".col-sm-6",
-//   "h4",
-//   ".text",
-//   ".col-sm-6"
-// );
-// running every two minutes using cron
-// cron.schedule("*/2 * * * *", () => {
-//   scrape(
-//     "http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion/all",
-//     "#list > .row",
-//     ".col-sm-6",
-//     "h4",
-//     ".text",
-//     ".col-sm-6"
-//   );
-// });
