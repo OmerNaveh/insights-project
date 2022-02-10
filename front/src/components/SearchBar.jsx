@@ -25,7 +25,7 @@ export default function SearchBar({ setLocalData, localData }) {
   };
   const debouncedFilter = _.debounce(filterLocally, 300);
   return (
-    <div>
+    <div className="searchBarDiv">
       <input
         ref={filterValues}
         onKeyDown={debouncedFilter}

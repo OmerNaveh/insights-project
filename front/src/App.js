@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import context from "./context/scrapingContext";
 import Feed from "./components/Feed";
 import Analytics from "./components/Analytics";
+import Navigationbar from "./components/Navigationbar";
 const url = "http://localhost:4000/api";
 function App() {
   const { setData, setAnalytics } = useContext(context);
@@ -17,6 +18,7 @@ function App() {
   }, []);
   return (
     <div className="App">
+      <Navigationbar />
       <Analytics />
       <Feed />
     </div>

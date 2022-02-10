@@ -15,7 +15,7 @@ export default function Feed() {
     ));
   };
   return (
-    <div>
+    <div className="feedDiv transition">
       <SearchBar setLocalData={setLocalData} localData={localData} />
       <div className="feed">{renderFeed()}</div>
     </div>

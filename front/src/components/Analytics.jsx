@@ -50,7 +50,7 @@ export default function Analytics() {
   };
 
   return (
-    <div>
+    <div className="analytics transition">
       <h3>Total Posts: {analytics.total}</h3>
       <div className="graph">{graphs()}</div>
       <Pie data={pieParams} />
