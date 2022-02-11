@@ -5,12 +5,13 @@ import Analytics from "./components/Analytics";
 import Navigationbar from "./components/Navigationbar";
 const url = "http://localhost:4000/api";
 function App() {
-  const { setData, setAnalytics } = useContext(context);
+  const { setData, setAnalytics, setTraffic } = useContext(context);
   useEffect(() => {
     let source = new EventSource(url);
     source.onmessage = (e) => {
       setData(JSON.parse(e.data).entries);
       setAnalytics(JSON.parse(e.data).analytics);
+      setTraffic(JSON.parse(e.data).traffic);
     };
     source.onerror = () => {
       source.close();

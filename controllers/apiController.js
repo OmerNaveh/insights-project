@@ -2,24 +2,26 @@ const Scrape = require("../mongo/models");
 const { scrape } = require("../scraping");
 const { clients } = require("../middlewares/clients");
 const { analysis } = require("../helpers/analytics");
+const { traffic } = require("../helpers/traffic");
 exports.retrieveData = async (req, res, next) => {
   const entries = await Scrape.find({});
   const analytics = await analysis();
-  const data = { entries, analytics };
+  const trafficObj = await traffic();
+  const data = { entries, analytics, traffic: trafficObj };
   clients.forEach((client) => {
     client.write(`data: ${JSON.stringify(data)}\n\n`);
   });
   // call on scrape and send the new message to all active clients
-  // setTimeout(async () => {
-  //   await scrape(
-  //     "http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion/all",
-  //     "#list > .row",
-  //     ".col-sm-6",
-  //     "h4",
-  //     ".text",
-  //     ".col-sm-6"
-  //   );
-  //   console.log("scrapped");
-  //   this.retrieveData(req, res, next);
-  // }, 120000); //every 2 minutes
+  setTimeout(async () => {
+    await scrape(
+      "http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion/all",
+      "#list > .row",
+      ".col-sm-6",
+      "h4",
+      ".text",
+      ".col-sm-6"
+    );
+    console.log("scrapped");
+    this.retrieveData(req, res, next);
+  }, 120000); //every 2 minutes
 };

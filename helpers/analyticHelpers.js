@@ -15,16 +15,8 @@ const filterByKeywordsArray = (paste, keywords) => {
   return containsKeyword;
 };
 const pasteContainsKeyWord = (paste, keyword) => {
-  const titleContainsKeyword = paste.title.includes(keyword);
-  const contentContainsKeyword = paste.content.includes(keyword);
-  const titleContainsKeywordUpper = paste.title.includes(keyword.toUpperCase());
-  const contentContainsKeywordUpper = paste.content.includes(
-    keyword.toUpperCase()
-  );
-  return (
-    titleContainsKeyword ||
-    titleContainsKeywordUpper ||
-    contentContainsKeyword ||
-    contentContainsKeywordUpper
-  );
+  const titleContainsKeyword = paste.title.toLowerCase().includes(keyword);
+  const contentContainsKeyword = paste.content.toLowerCase().includes(keyword);
+
+  return titleContainsKeyword || contentContainsKeyword;
 };
