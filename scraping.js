@@ -1,11 +1,10 @@
 const { parse } = require("node-html-parser");
 const axios = require("axios");
-const cron = require("node-cron");
 const { unwantedChars } = require("./utils/unwantedChars");
 const { showMoreContent } = require("./utils/showMoreContent");
 const Scrape = require("./mongo/models");
 const proxy = {
-  proxy: { port: 8118, host: "localhost" },
+  proxy: { port: 8118, host: "tor-proxy" },
 };
 exports.scrape = async (
   url,
