@@ -1,5 +1,12 @@
 const { filteredArrayesByKeyword } = require("./analyticHelpers");
 const Scrape = require("../mongo/models");
+
+/**
+ * Gathers analytics from db
+ *
+ * categories: porn, dataleaks, drugs, currency and other
+ * @return {Object} containing the number of pastes in every category
+ */
 exports.analysis = async () => {
   try {
     const initialData = await Scrape.find({});
